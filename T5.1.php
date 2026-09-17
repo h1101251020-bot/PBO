@@ -6,7 +6,6 @@ class Produk {
 
     public function __construct($nama, $harga, $merek) {
         $this->nama = $nama;
-    
         if ($harga < 0) {
             $this->harga = 0;
             echo "<br><b>Peringatan:</b> Harga tidak boleh negatif! Harga diatur ke Rp 0.<br>";
@@ -17,7 +16,9 @@ class Produk {
     }
 
     public function getInfo() {
-        return "Produk: " . $this->nama . " | Merek: " . $this->merek . " | Harga: Rp " . number_format($this->harga, 0, ',', '.');
+        return "Produk: " . $this->nama . "<br>" .
+               "Merek: " . $this->merek . "<br>" .
+               "Harga: Rp " . number_format($this->harga, 0, ',', '.');
     }
 
     public function getHarga() {
@@ -34,7 +35,9 @@ class Makanan extends Produk {
     }
 
     public function getInfo() {
-        return parent::getInfo() . " | Tanggal Kadaluarsa: " . $this->tanggalKadaluarsa . " | Status: " . $this->cekKadaluarsa();
+        return parent::getInfo() . "<br>" .
+               "Tanggal Kadaluarsa: " . $this->tanggalKadaluarsa . "<br>" .
+               "Status: " . $this->cekKadaluarsa();
     }
 
     public function cekKadaluarsa() {
@@ -52,7 +55,8 @@ class Elektronik extends Produk {
     }
 
     public function getInfo() {
-        return parent::getInfo() . " | Garansi: " . $this->garansi . " bulan";
+        return parent::getInfo() . "<br>" .
+               "Garansi: " . $this->garansi . " bulan";
     }
 }
 
@@ -60,6 +64,6 @@ $makanan = new Makanan("Mie Instan", 3500, "Indomie", "2025-06-30");
 $elektronik = new Elektronik("Smart TV", 5000000, "Samsung", 12);
 
 echo "<h3>Output Tugas 1:</h3>";
-echo $makanan->getInfo() . "<br><br>";
+echo $makanan->getInfo() . "<br><br><hr><br>";
 echo $elektronik->getInfo() . "<br>";
 ?>
